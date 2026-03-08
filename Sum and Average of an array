@@ -1,0 +1,21 @@
+#include<stdio.h>
+void main(){
+    int n,i,sum=0;
+    float avg;
+    int ar[100];
+
+    printf("Enter the limit: ");
+    scanf("%d",&n);
+
+    for(i=0;i<n;i++){
+        printf("Enter the numbers: ");
+        scanf("%d",&ar[i]);
+        sum = sum + ar[i];
+    }
+
+    printf("Sum = %d\n", sum);
+
+    avg = sum / n;
+
+    printf("Average = %f", avg);
+}
