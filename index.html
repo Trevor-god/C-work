@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA World Cup Edition</title>
+    <link rel="stylesheet" href="1.css">
+   <link rel="icon" type="image/x-icon" href="fifa logo.jpeg">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="#"><strong>FIFA2026</strong></a>
+        </div>
+        <div class="contact-email">
+            <a href="#">ItsArjun</a>
+        </div>
+    </header>
+
+    <main class="scroll-container">
+        
+        <!-- Section 1: Portugal -->
+        <section id="portugal" class="issue-section" style="--bg-color: #00662f;">
+            <div class="left-column-info">
+                <p><strong>A Seleção das Quinas.</strong> Known for its legendary footballing heritage, tactical brilliance, and producing generation-defining icons, Portugal stands tall as a powerhouse on the international stage.</p>
+            </div>
+            
+            <div class="center-image-container">
+                <img src="portugal.jpeg" alt="Portugal National Football Team Cover" class="issue-cover">
+            </div>
+
+            <div class="issue-text-block">
+                <h2>PORTUGAL</h2>
+                <p class="buy-links"><a href="portugal.html" class="buy-btn">About team</a></p>
+            </div>
+        </section>
+
+        <!-- Section 2: France -->
+        <section id="france" class="issue-section" style="--bg-color: #002395;">
+            <div class="left-column-info">
+                <p><strong>Les Bleus.</strong> Built on immense depth, blistering pace, and global tournament dominance, the French squad continues to shape modern football culture through sheer athletic excellence.</p>
+            </div>
+
+            <div class="center-image-container">
+                <img src="france.jpg" alt="France National Football Team Cover" class="issue-cover">
+            </div>
+
+            <div class="issue-text-block">
+                <h2>FRANCE</h2>
+                <p class="buy-links"><a href="#" class="buy-btn">About team</a></p>
+            </div>
+        </section>
+
+        <!-- Section 3: Argentina -->
+        <section id="argentina" class="issue-section" style="--bg-color: #74acdf;">
+            <div class="left-column-info">
+                <p><strong>La Albiceleste.</strong> Driven by raw passion, deep cultural identity, and unmatched creative synergy, the world champions bring a poetic rhythm to every pitch they step on.</p>
+            </div>
+
+            <div class="center-image-container">
+                <img src="argentina.jpeg" alt="Argentina National Football Team Cover" class="issue-cover">
+            </div>
+
+            <div class="issue-text-block">
+                <h2>ARGENTINA</h2>
+                <p class="buy-links"><a href="#" class="buy-btn">About team</a></p>
+            </div>
+        </section>
+
+        <!-- Section 4: Germany -->
+        <section id="germany" class="issue-section" style="--bg-color: #ffce00;">
+            <div class="left-column-info">
+                <p><strong>Die Mannschaft.</strong> A story of flawless machine-like precision, relentless competitive drive, and structural reinvention that keeps them perpetually among the elite.</p>
+            </div>
+
+            <div class="center-image-container">
+                <img src="germany.jpeg" alt="Germany National Football Team Cover" class="issue-cover">
+            </div>
+
+            <div class="issue-text-block">
+                <h2>GERMANY</h2>
+                <p class="buy-links"><a href="#" class="buy-btn">About team</a></p>
+            </div>
+        </section>
+
+        <!-- Section 5: Croatia -->
+        <section id="croatia" class="issue-section" style="--bg-color: #ff0000;">
+            <div class="left-column-info">
+                <p><strong>Vatreni.</strong> Renowned for their defiant spirit, legendary elite midfield mechanics, and a golden generation that consistently defies the odds on the biggest stages.</p>
+            </div>
+
+            <div class="center-image-container">
+                <img src="croatia.jpeg" alt="Croatia National Football Team Cover" class="issue-cover">
+            </div>
+
+            <div class="issue-text-block">
+                <h2>CROATIA</h2>
+                <p class="buy-links"><a href="#" class="buy-btn">About team</a></p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Side navigation menu updated with matching links -->
+    <nav class="issue-navigation">
+        <ul>
+            <li><a href="#portugal" class="active">Portugal</a></li>
+            <li><a href="#france">France</a></li>
+            <li><a href="#argentina">Argentina</a></li>
+            <li><a href="#germany">Germany</a></li>
+            <li><a href="#croatia">Croatia</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        const sections = document.querySelectorAll('.issue-section');
+        const navLinks = document.querySelectorAll('.issue-navigation a');
+
+        // Precision parameters to capture the intersection exactly at the center of view
+        const observerOptions = {
+            root: null,
+            rootMargin: '-49% 0px -49% 0px', 
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const targetId = entry.target.getAttribute('id');
+                    const targetColor = entry.target.style.getPropertyValue('--bg-color');
+                    
+                    // Modifies global body element to transition smoothly to the next flag color
+                    document.body.style.backgroundColor = targetColor;
+                    
+                    // Active list class utility mapping
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${targetId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+</body>
+</html>
